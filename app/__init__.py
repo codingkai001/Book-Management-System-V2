@@ -20,8 +20,7 @@ def create_app():
     app.config['SECRET_KEY'] = 'hard to guess string'
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'data.sqlite')
     app.config['SQLALCHEMY_COMMIT_ON_TEARDOWN'] = True
-    #app.config.from_object(config[config_name])
-    #config[config_name].init_app(app)
+    app.config['DEBUG'] = True
     db.init_app(app)
     login_manager.init_app(app)
     # 附加路由

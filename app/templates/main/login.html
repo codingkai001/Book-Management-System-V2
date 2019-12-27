@@ -1,8 +1,8 @@
 {% extends "main/base-user.html" %}
-{% block title %}欢迎使用图书管理系统{% endblock %}
+{% block title %}登录|图书管理系统{% endblock %}
 
 {% block body %}
-<div class="login-main">
+<div class="login-main" style="top: 70px;">
     <header class="layui-elip">登录</header>
     <form class="layui-form" method="post">
         {{ form.csrf_token }}
@@ -16,7 +16,7 @@
             {{ form.submit(class="layui-btn") }}
         </div>
         <hr/>
-        <p><a href="javascript:;" class="fr">忘记密码请与系统管理员联系</a></p>
+        <p><a style="color: antiquewhite;" href="mailto:codingkai001@gmail.com" class="fr">忘记密码?请联系系统管理员</a></p>
     </form>
 
 </div>
