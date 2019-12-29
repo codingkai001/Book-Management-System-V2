@@ -2,28 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4e424946-85c8-4d02-9499-e95112f828d3" name="Default" comment="init...">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/book_resources.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/debug_records" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Book-Management-System-V2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Book-Management-System-V2.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/5c800b92-851c-45cf-8230-fdc6ae7a89c0/storage_v2/_src_/schema/main.uQUzAA.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/a863e004-0917-4115-9288-d7d4e030b1da.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/a863e004-0917-4115-9288-d7d4e030b1da.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/data.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/app/data.sqlite" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/main/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/main/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/static/icon.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/icon.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/templates/main/base-user.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/main/base-user.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/templates/main/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/main/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/main/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/main/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/main/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/main/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/main/new-store.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/main/new-store.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/main/search-student.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/main/search-student.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/main/storage.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/main/storage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/main/user-student.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/main/user-student.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,6 +49,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="codingkai &lt;codingkai001@gmail.com&gt;" />
+      </list>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1VWZhFytlnu1vvx8od0eBm4XJ5c" />
@@ -93,7 +79,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="settings.editor.selected.configurable" value="settings.github" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -173,7 +159,7 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/manage.py" />
-      <option name="PARAMETERS" value="runserver" />
+      <option name="PARAMETERS" value="runserver --host=127.0.0.1 --port=80" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -192,17 +178,7 @@
       <list>
         <serviceView>
           <treeState>
-            <expand>
-              <path>
-                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-                <item name="root:data.sqlite" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-              </path>
-              <path>
-                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-                <item name="root:data.sqlite" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-                <item name="com.intellij.database.console.session.MessageBusSession@256a6bf5" type="9fbbdea:ServiceModel$ServiceNode" />
-              </path>
-            </expand>
+            <expand />
             <select />
           </treeState>
         </serviceView>
@@ -224,7 +200,8 @@
       <workItem from="1577507563794" duration="894000" />
       <workItem from="1577516324376" duration="8628000" />
       <workItem from="1577588630271" duration="4418000" />
-      <workItem from="1577601601329" duration="3611000" />
+      <workItem from="1577601601329" duration="4064000" />
+      <workItem from="1577620683629" duration="941000" />
     </task>
     <task id="LOCAL-00001" summary="init...">
       <created>1577421917257</created>
@@ -233,7 +210,14 @@
       <option name="project" value="LOCAL" />
       <updated>1577421917257</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="init...">
+      <created>1577610031326</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1577610031326</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -243,57 +227,61 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="init..." />
     <option name="LAST_COMMIT_MESSAGE" value="init..." />
+    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="2181" y="9" key="#Notifications" timestamp="1577422046924">
       <screen x="1920" y="0" width="1536" height="864" />
     </state>
     <state x="2181" y="9" key="#Notifications/0.0.1536.864/1920.0.1536.864@1920.0.1536.864" timestamp="1577422046924" />
-    <state x="2143" y="82" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1577418887907">
-      <screen x="1920" y="0" width="1536" height="864" />
+    <state x="223" y="82" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1577621080580">
+      <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="2143" y="82" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.864/1920.0.1536.864@1920.0.1536.864" timestamp="1577418887907" />
+    <state x="223" y="82" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.864@0.0.1536.864" timestamp="1577621080580" />
     <state x="340" y="220" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1577589100582">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="340" y="220" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.864@0.0.1536.864" timestamp="1577589100581" />
-    <state x="2104" y="0" key="CommitChangelistDialog2" timestamp="1577422066972">
-      <screen x="1920" y="0" width="1536" height="864" />
+    <state x="184" y="0" key="CommitChangelistDialog2" timestamp="1577610029222">
+      <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="2104" y="0" key="CommitChangelistDialog2/0.0.1536.864/1920.0.1536.864@1920.0.1536.864" timestamp="1577422066972" />
+    <state x="184" y="0" key="CommitChangelistDialog2/0.0.1536.864@0.0.1536.864" timestamp="1577610029222" />
     <state x="499" y="117" key="FileChooserDialogImpl" timestamp="1577523338278">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="499" y="117" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1577523338278" />
-    <state width="1485" height="217" key="GridCell.Tab.0.bottom" timestamp="1577609928426">
+    <state width="1485" height="217" key="GridCell.Tab.0.bottom" timestamp="1577621286659">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="1485" height="218" key="GridCell.Tab.0.bottom/0.0.1536.864/1920.0.1536.864@1920.0.1536.864" timestamp="1577422075782" />
-    <state width="1485" height="217" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1577609928426" />
-    <state width="1485" height="217" key="GridCell.Tab.0.center" timestamp="1577609928425">
+    <state width="1485" height="217" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1577621286659" />
+    <state width="1485" height="217" key="GridCell.Tab.0.center" timestamp="1577621286659">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="1485" height="218" key="GridCell.Tab.0.center/0.0.1536.864/1920.0.1536.864@1920.0.1536.864" timestamp="1577422075782" />
-    <state width="1485" height="217" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1577609928425" />
-    <state width="1485" height="217" key="GridCell.Tab.0.left" timestamp="1577609928425">
+    <state width="1485" height="217" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1577621286659" />
+    <state width="1485" height="217" key="GridCell.Tab.0.left" timestamp="1577621286658">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="1485" height="218" key="GridCell.Tab.0.left/0.0.1536.864/1920.0.1536.864@1920.0.1536.864" timestamp="1577422075781" />
-    <state width="1485" height="217" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1577609928425" />
-    <state width="1485" height="217" key="GridCell.Tab.0.right" timestamp="1577609928425">
+    <state width="1485" height="217" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1577621286658" />
+    <state width="1485" height="217" key="GridCell.Tab.0.right" timestamp="1577621286659">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="1485" height="218" key="GridCell.Tab.0.right/0.0.1536.864/1920.0.1536.864@1920.0.1536.864" timestamp="1577422075782" />
-    <state width="1485" height="217" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1577609928425" />
-    <state x="184" y="0" key="SettingsEditor" timestamp="1577608097833">
+    <state width="1485" height="217" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1577621286659" />
+    <state x="184" y="0" key="SettingsEditor" timestamp="1577610192446">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="2104" y="0" key="SettingsEditor/0.0.1536.864/1920.0.1536.864@1920.0.1536.864" timestamp="1577421988070" />
-    <state x="184" y="0" key="SettingsEditor/0.0.1536.864@0.0.1536.864" timestamp="1577608097833" />
-    <state x="2181" y="102" key="Vcs.Push.Dialog.v2" timestamp="1577422009756">
-      <screen x="1920" y="0" width="1536" height="864" />
+    <state x="184" y="0" key="SettingsEditor/0.0.1536.864@0.0.1536.864" timestamp="1577610192446" />
+    <state x="261" y="102" key="Vcs.Push.Dialog.v2" timestamp="1577610235468">
+      <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="2181" y="102" key="Vcs.Push.Dialog.v2/0.0.1536.864/1920.0.1536.864@1920.0.1536.864" timestamp="1577422009756" />
+    <state x="261" y="102" key="Vcs.Push.Dialog.v2/0.0.1536.864@0.0.1536.864" timestamp="1577610235468" />
     <state x="407" y="69" key="com.intellij.execution.console.ConsoleHistoryController$MyBrowseAction$1" timestamp="1577521191344">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -304,6 +292,6 @@
     <state x="481" y="331" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.864@0.0.1536.864" timestamp="1577516902611" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Book_Management_System_V2$manage.coverage" NAME="manage Coverage Results" MODIFIED="1577601622823" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Book_Management_System_V2$manage.coverage" NAME="manage Coverage Results" MODIFIED="1577621081794" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
