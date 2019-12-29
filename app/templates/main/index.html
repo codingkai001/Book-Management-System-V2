@@ -1,36 +1,39 @@
 {% extends "main/base.html" %}
 {% block title %}首页{% endblock %}\
 {% block head %}
-    <script type="text/javascript" src="http://echarts.baidu.com/dist/echarts.js"></script>
+<script type="text/javascript" src="http://echarts.baidu.com/dist/echarts.js"></script>
 {% endblock %}
 
 {% block body %}
-<div id="main" style="width: 900px;height:470px;"></div>
+<div style="font-size: 30px;width: 100%;text-align: center;line-height: 60px;">近10天借书还书人次汇总图</div>
+<div id="main" style="width: 90%;height:500px;margin: 0 auto;"></div>
 
 {% endblock %}
 {% block script %}
-    <script>
+<script>
     var a = echarts;
     var myChart = a.init(document.getElementById('main'));
-     // 显示标题，图例和空的坐标轴
-     myChart.setOption({
-         title: {
-             text: '近10天借书还书人次汇总图'
-         },
+    // 显示标题，图例和空的坐标轴
+    myChart.setOption({
+        title: {
+            // text: '近10天借书还书人次汇总图',
+            // textStyle: {
+            //     fontSize: 20
+            // },
+            // textAlign: 'auto',
+
+        },
          tooltip : {
         trigger: 'axis'
-        },
-        legend: {
-            data:['今日数据']
         },
         toolbox: {
             show : true,
             feature : {
-                mark : {show: true},
-                dataView : {show: true, readOnly: false},
-                magicType : {show: true, type: ['line', 'bar']}
-                // restore : {show: true},
-                // saveAsImage : {show: true}
+                mark: {show: true},
+                dataView: {show: true, readOnly: false},
+                magicType: {show: true, type: ['line', 'bar']},
+                restore: {show: true},
+                saveAsImage: {show: true}
             }
         },
         calculable : true,

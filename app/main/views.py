@@ -2,10 +2,12 @@ from datetime import datetime
 from flask import render_template, session, redirect, url_for, flash, request, jsonify
 from flask_login import login_user, logout_user, login_required, current_user
 from . import main
-from .forms import Login, SearchBookForm, ChangePasswordForm, EditInfoForm, SearchStudentForm, NewStoreForm, StoreForm, BorrowForm
+from .forms import Login, SearchBookForm, ChangePasswordForm, EditInfoForm, SearchStudentForm, NewStoreForm, StoreForm, \
+    BorrowForm
 from .. import db
 from ..models import Admin, Book, Inventory, Student, ReadBook
-import time, datetime
+import time
+import datetime
 
 
 @main.route('/', methods=['GET', 'POST'])
@@ -43,19 +45,21 @@ def index():
 def echarts():
     days = []
     num = []
+    duration = datetime.timedelta(days=10)
     today_date = datetime.date.today()
     today_str = today_date.strftime("%Y-%m-%d")
     today_stamp = time.mktime(time.strptime(today_str + ' 00:00:00', '%Y-%m-%d %H:%M:%S'))
     ten_ago = int(today_stamp) - 9 * 86400
     for i in range(0, 10):
-        borr = ReadBook.query.filter_by(start_date=str((ten_ago+i*86400)*1000)).count()
-        retu = ReadBook.query.filter_by(end_date=str((ten_ago+i*86400)*1000)).count()
+        borr = ReadBook.query.filter_by(start_date=str((ten_ago + i * 86400) * 1000)).count()
+        retu = ReadBook.query.filter_by(end_date=str((ten_ago + i * 86400) * 1000)).count()
         num.append(borr + retu)
-        days.append(timeStamp((ten_ago+i*86400)*1000))
+        days.append(time_stamp((ten_ago + i * 86400) * 1000))
     data = []
     for i in range(0, 10):
         item = {'name': days[i], 'num': num[i]}
         data.append(item)
+    print(data)
     return jsonify(data)
 
 
@@ -108,9 +112,8 @@ def search_book():  # 这个函数里不再处理提交按钮，使用Ajax局部
 
 @main.route('/books', methods=['POST'])
 def find_book():
-
     def find_name():
-        return Book.query.filter(Book.book_name.like('%'+request.form.get('content')+'%')).all()
+        return Book.query.filter(Book.book_name.like('%' + request.form.get('content') + '%')).all()
 
     def find_author():
         return Book.query.filter(Book.author.contains(request.form.get('content'))).all()
@@ -151,14 +154,13 @@ def search_student():
     return render_template('main/search-student.html', name=session.get('name'), form=form)
 
 
-def timeStamp(timeNum):
-    if timeNum is None:
-        return timeNum
+def time_stamp(time_num):
+    if time_num is None:
+        return time_num
     else:
-        timeStamp = float(float(timeNum)/1000)
-        timeArray = time.localtime(timeStamp)
-        print(time.strftime("%Y-%m-%d", timeArray))
-        return time.strftime("%Y-%m-%d", timeArray)
+        time_array = time.localtime(float(float(time_num) / 1000))
+        # print(time.strftime("%Y-%m-%d", timeArray))
+        return time.strftime("%Y-%m-%d", time_array)
 
 
 @main.route('/student', methods=['POST'])
@@ -167,20 +169,20 @@ def find_student():
     if stu is None:
         return jsonify([])
     else:
-        valid_date = timeStamp(stu.valid_date)
+        valid_date = time_stamp(stu.valid_date)
         return jsonify([{'name': stu.student_name, 'gender': stu.sex, 'valid_date': valid_date, 'debt': stu.debt}])
 
 
 @main.route('/record', methods=['POST'])
 def find_record():
-    records = db.session.query(ReadBook).join(Inventory).join(Book).filter(ReadBook.card_id == request.form.get('card'))\
+    records = db.session.query(ReadBook).join(Inventory).join(Book).filter(ReadBook.card_id == request.form.get('card')) \
         .with_entities(ReadBook.barcode, Inventory.isbn, Book.book_name, Book.author, ReadBook.start_date,
                        ReadBook.end_date, ReadBook.due_date).all()  # with_entities啊啊啊啊卡了好久啊
     data = []
     for record in records:
-        start_date = timeStamp(record.start_date)
-        due_date = timeStamp(record.due_date)
-        end_date = timeStamp(record.end_date)
+        start_date = time_stamp(record.start_date)
+        due_date = time_stamp(record.due_date)
+        end_date = time_stamp(record.end_date)
         if end_date is None:
             end_date = '未归还'
         item = {'barcode': record.barcode, 'book_name': record.book_name, 'author': record.author,
@@ -221,7 +223,7 @@ def storage():
                     today_date = datetime.date.today()
                     today_str = today_date.strftime("%Y-%m-%d")
                     today_stamp = time.mktime(time.strptime(today_str + ' 00:00:00', '%Y-%m-%d %H:%M:%S'))
-                    item.storage_date = int(today_stamp)*1000
+                    item.storage_date = int(today_stamp) * 1000
                     db.session.add(item)
                     db.session.commit()
                     flash(u'入库成功！')
@@ -271,12 +273,15 @@ def find_stu_book():
         return jsonify([{'stu': 0}])  # 没找到
     if stu.debt is True:
         return jsonify([{'stu': 1}])  # 欠费
-    if int(stu.valid_date) < int(today_stamp)*1000:
+    if int(stu.valid_date) < int(today_stamp) * 1000:
         return jsonify([{'stu': 2}])  # 到期
     if stu.loss is True:
         return jsonify([{'stu': 3}])  # 已经挂失
     books = db.session.query(Book).join(Inventory).filter(Book.book_name.contains(request.form.get('book_name')),
-        Inventory.status == 1).with_entities(Inventory.barcode, Book.isbn, Book.book_name, Book.author, Book.press).\
+                                                          Inventory.status == 1).with_entities(Inventory.barcode,
+                                                                                               Book.isbn,
+                                                                                               Book.book_name,
+                                                                                               Book.author, Book.press). \
         all()
     data = []
     for book in books:
@@ -298,8 +303,8 @@ def out():
     readbook = ReadBook()
     readbook.barcode = barcode
     readbook.card_id = card
-    readbook.start_date = int(today_stamp)*1000
-    readbook.due_date = (int(today_stamp)+40*86400)*1000
+    readbook.start_date = int(today_stamp) * 1000
+    readbook.due_date = (int(today_stamp) + 40 * 86400) * 1000
     readbook.borrow_admin = current_user.admin_id
     db.session.add(readbook)
     db.session.commit()
@@ -307,7 +312,7 @@ def out():
     book.status = False
     db.session.add(book)
     db.session.commit()
-    bks = db.session.query(Book).join(Inventory).filter(Book.book_name.contains(book_name), Inventory.status == 1).\
+    bks = db.session.query(Book).join(Inventory).filter(Book.book_name.contains(book_name), Inventory.status == 1). \
         with_entities(Inventory.barcode, Book.isbn, Book.book_name, Book.author, Book.press).all()
     data = []
     for bk in bks:
@@ -334,17 +339,18 @@ def find_not_return_book():
         return jsonify([{'stu': 0}])  # 没找到
     if stu.debt is True:
         return jsonify([{'stu': 1}])  # 欠费
-    if int(stu.valid_date) < int(today_stamp)*1000:
+    if int(stu.valid_date) < int(today_stamp) * 1000:
         return jsonify([{'stu': 2}])  # 到期
     if stu.loss is True:
         return jsonify([{'stu': 3}])  # 已经挂失
     books = db.session.query(ReadBook).join(Inventory).join(Book).filter(ReadBook.card_id == request.form.get('card'),
-        ReadBook.end_date.is_(None)).with_entities(ReadBook.barcode, Book.isbn, Book.book_name, ReadBook.start_date,
-                                                 ReadBook.due_date).all()
+                                                                         ReadBook.end_date.is_(None)).with_entities(
+        ReadBook.barcode, Book.isbn, Book.book_name, ReadBook.start_date,
+        ReadBook.due_date).all()
     data = []
     for book in books:
-        start_date = timeStamp(book.start_date)
-        due_date = timeStamp(book.due_date)
+        start_date = time_stamp(book.start_date)
+        due_date = time_stamp(book.due_date)
         item = {'barcode': book.barcode, 'isbn': book.isbn, 'book_name': book.book_name,
                 'start_date': start_date, 'due_date': due_date}
         data.append(item)
@@ -356,12 +362,12 @@ def find_not_return_book():
 def bookin():
     barcode = request.args.get('barcode')
     card = request.args.get('card')
-    record = ReadBook.query.filter(ReadBook.barcode == barcode, ReadBook.card_id == card, ReadBook.end_date.is_(None)).\
+    record = ReadBook.query.filter(ReadBook.barcode == barcode, ReadBook.card_id == card, ReadBook.end_date.is_(None)). \
         first()
     today_date = datetime.date.today()
     today_str = today_date.strftime("%Y-%m-%d")
     today_stamp = time.mktime(time.strptime(today_str + ' 00:00:00', '%Y-%m-%d %H:%M:%S'))
-    record.end_date = int(today_stamp)*1000
+    record.end_date = int(today_stamp) * 1000
     record.return_admin = current_user.admin_id
     db.session.add(record)
     db.session.commit()
@@ -370,12 +376,13 @@ def bookin():
     db.session.add(book)
     db.session.commit()
     bks = db.session.query(ReadBook).join(Inventory).join(Book).filter(ReadBook.card_id == card,
-        ReadBook.end_date.is_(None)).with_entities(ReadBook.barcode, Book.isbn, Book.book_name, ReadBook.start_date,
-                                                 ReadBook.due_date).all()
+                                                                       ReadBook.end_date.is_(None)).with_entities(
+        ReadBook.barcode, Book.isbn, Book.book_name, ReadBook.start_date,
+        ReadBook.due_date).all()
     data = []
     for bk in bks:
-        start_date = timeStamp(bk.start_date)
-        due_date = timeStamp(bk.due_date)
+        start_date = time_stamp(bk.start_date)
+        due_date = time_stamp(bk.due_date)
         item = {'barcode': bk.barcode, 'isbn': bk.isbn, 'book_name': bk.book_name,
                 'start_date': start_date, 'due_date': due_date}
         data.append(item)
