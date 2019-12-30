@@ -3,7 +3,7 @@ from flask import render_template, session, redirect, url_for, flash, request, j
 from flask_login import login_user, logout_user, login_required, current_user
 from . import main
 from .forms import Login, SearchBookForm, ChangePasswordForm, EditInfoForm, SearchStudentForm, NewStoreForm, StoreForm, \
-    BorrowForm
+    BorrowForm, CleanBookForm
 from .. import db
 from ..models import Admin, Book, Inventory, Student, ReadBook
 import time
@@ -387,3 +387,26 @@ def bookin():
                 'start_date': start_date, 'due_date': due_date}
         data.append(item)
     return jsonify(data)
+
+
+@main.route('/clean_book', methods=['GET', 'POST'])
+@login_required
+def clean_book():
+    form = CleanBookForm()
+    if form.validate_on_submit():
+        barcode = Inventory.query.filter_by(barcode=request.form.get('barcode')).first()
+        withdraw = Inventory.query.filter_by(barcode=request.form.get('barcode')).first()
+        if barcode is None:
+            flash(u'该图书不存在')
+        elif withdraw is True:
+            flash(u'该图书不存在')
+        else:
+            if len(request.form.get('barcode')) != 6:
+                flash(u'图书编码长度错误')
+            else:
+                item = Inventory.query.filter_by(barcode=request.form.get('barcode')).first()
+                db.session.delete(item)
+                db.session.commit()
+                flash(u'注销成功！')
+        return redirect(url_for('.clean_book'))
+    return render_template('main/clean-book.html', name=session.get('name'), form=form)

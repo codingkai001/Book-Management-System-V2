@@ -53,3 +53,9 @@ class BorrowForm(FlaskForm):
     card = StringField(validators=[DataRequired()])
     book_name = StringField(validators=[DataRequired()])
     submit = SubmitField(u'搜索')
+
+
+class CleanBookForm(FlaskForm):
+    barcode = StringField(validators=[DataRequired(), Length(6)])
+    isbn = StringField(validators=[DataRequired(), Length(13)])
+    submit = SubmitField(u'提交')
